@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PersonTest {
 
@@ -31,6 +32,7 @@ public class PersonTest {
         //Then (assert)
         assertEquals(41, pieterPost.getAge());
     }
+
     @Test
     void testChildShouldBeAdded() {
         //Given (arrange)
@@ -58,6 +60,16 @@ public class PersonTest {
         assertEquals("Post", pieterPost.getLastName());
     }
 
-}
+    @Test
+    void testGivenAPartnerHasPartnerShoultReturnTrue() {
+        //Given (arrange)
+        Person pieterPost = new Person("Pieter");
+        Person petraPost = new Person("Petra");
 
-//TODO: Zie lesopdracht afbeelding in assets.
+        //When (act)
+        pieterPost.setPartner(petraPost);
+
+        //Then (assert)
+        assertTrue(pieterPost.hasPartner());
+    }
+}
